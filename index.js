@@ -15,7 +15,7 @@ const app = express();
 // }
 // app.use(cors(corsOrigin));
  app.use(cors({
-      origin:["https://file-swift-uploader.vercel.app/"],
+      origin:["https://file-swift-uploader.vercel.app"],
       methods:["POST","GET"],
       credentials:true
  }));
