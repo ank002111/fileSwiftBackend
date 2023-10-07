@@ -9,23 +9,30 @@ dotenv.config();
 const app = express();
 
 // const corsOrigin ={
-//     origin:'http://localhost:3000', //or whatever port your frontend is using
+//     origin:'https://file-swift-uploader.vercel.app', //or whatever port your frontend is using
 //     credentials:true,            
 //     optionSuccessStatus:200
 // }
 // app.use(cors(corsOrigin));
-//  app.use(cors({
-//       origin:["https://file-swift-uploader.vercel.app"],
-//       methods:["POST","GET"],
-//       credentials:true
-//  }));
 
 app.use(cors());
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
+//  app.use(cors({
+//       origin:["https://file-swift-uploader.vercel.app"],
+//       methods:["POST","GET","DELETE"],
+//       credentials:true
+//  }));
+//  app.use(cors({
+//     origin: 'https://file-swift-uploader.vercel.app',
+//   }));
+  
+
+app.use((req,res,next)=>{
+    res.setHeader('Access-Control-Allow-Origin','*');
+    res.setHeader('Access-Control-Allow-Methods','GET,POST,PUT,PATCH,DELETE');
+    res.setHeader('Access-Control-Allow-Methods','Content-Type','Authorization');
+    next(); 
 });
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/',router);
