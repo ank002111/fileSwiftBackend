@@ -20,7 +20,7 @@ export const uploadFile = async (req, res) => {
     res
       .status(200)
       .json({
-        path: `${process.env.BASE_URL}/file/${file._id}`,
+        path: `https://file-swift-backend.vercel.app/file/${file._id}`,
         shortLink: fileObj.shortLink,
       });
   } catch (error) {
